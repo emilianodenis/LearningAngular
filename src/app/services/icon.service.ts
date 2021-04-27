@@ -1,6 +1,9 @@
-import { Injectable, SecurityContext } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+
+const iconBasePath: string =  "/assets/icons/";
+const iconBaseExtension: string =  ".svg";
 
 const icons: string[] = [
     "account_circle",
@@ -18,18 +21,11 @@ export class IconService{
     }
 
     public loadIcons(): void {
-        let basePath = "/assets/icons/";
-        let extension = ".svg";
-
         icons.forEach(icon => {
             this.registry.addSvgIcon(
                 icon,
-                this.sanitizer.bypassSecurityTrustResourceUrl(`${basePath}${icon}${extension}`),
+                this.sanitizer.bypassSecurityTrustResourceUrl(`${iconBasePath}${icon}${iconBaseExtension}`),
             )
         });
-
-        // this.registry.addSvgIcon(
-        //     "account_circle",
-        //     this.sanitizer.bypassSecurityTrustResourceUrl("account_circle.svg"));
     }
 }

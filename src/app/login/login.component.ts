@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { RouterService } from 'src/app/services/router.service';
 
 
 // import {AuthStore} from '../services/auth.store';
@@ -16,10 +17,11 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private router: Router,
+        private auth: AuthService,
+        private routerService: RouterService,
     ) {
 
-        this.form = fb.group({
+        this.form = this.fb.group({
             email: ['test@angular-university.io', [Validators.required]],
             password: ['test', [Validators.required]]
         });
@@ -32,17 +34,22 @@ export class LoginComponent implements OnInit {
 
     login() {
 
+        if (!this.form.valid)
+            return;
+
         const val = this.form.value;
 
-        // this.auth.login(val.email, val.password)
-        //     .subscribe(
-        //         () => {
-        //             this.router.navigateByUrl('/courses');
-        //         },
-        //         err => {
-        //             alert("Login failed!");
-        //         }
-        //     );
+        this.auth.login(val.email, val.password)
+            .subscribe(
+                res => {
+                    if (res){
+                        this.routerService.navigateToAbout();
+                    }
+                },
+                err => {
+                    alert("Login failed!");
+                }
+            );
 
 
 

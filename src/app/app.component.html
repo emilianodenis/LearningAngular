@@ -27,8 +27,8 @@
       <mat-icon svgIcon="help"></mat-icon>
     </a>
 
-    <!--  *ngIf="auth.isLoggedIn$ | async" (click)="logout()" -->
-    <a mat-button class="menu-item">
+    <!--  *ngIf="auth.isLoggedIn$ | async" -->
+    <a mat-button class="menu-item" (click)="logout()">
       <mat-icon svgIcon="exit_to_app"></mat-icon>
       <span>Logout</span>
     </a>

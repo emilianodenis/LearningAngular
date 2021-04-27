@@ -1,12 +1,14 @@
 
 import { NgModule } from '@angular/core';
 import { AboutComponent } from 'src/app/about/about.component';
-import { AppRoutingModule } from 'src/app/shared-modules/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
-import { IconService } from 'src/app/icon.service';
 import { LoginComponent } from 'src/app/login/login.component';
-import { AngularModule } from 'src/app/shared-modules/angular.module';
-import { MaterialModule } from 'src/app/shared-modules/material.module';
+import { AngularModule } from 'src/app/main-modules/angular.module';
+import { AppRoutingModule } from 'src/app/main-modules/app-routing.module';
+import { MaterialModule } from 'src/app/main-modules/material.module';
+import { AuthService } from 'src/app/services/auth.service';
+import { IconService } from 'src/app/services/icon.service';
+import { RouterService } from 'src/app/services/router.service';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import { MaterialModule } from 'src/app/shared-modules/material.module';
         AppRoutingModule,
     ],
     providers: [
+        AuthService,
         IconService,
+        RouterService,
     ],
     bootstrap: [
         AppComponent,
