@@ -18,7 +18,7 @@ export class RouterService {
         this.router.navigateByUrl("/about");
     }
 
-    public navigateToHome(): void {
+    public navigateToGames(): void {
         this.router.navigateByUrl("/games");
     }
 }

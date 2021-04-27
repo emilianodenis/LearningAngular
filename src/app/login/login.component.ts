@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 res => {
                     if (res){
-                        this.routerService.navigateToAbout();
+                        this.routerService.navigateToGames();
                     }
                 },
                 err => {

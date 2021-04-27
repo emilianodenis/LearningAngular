@@ -9,12 +9,16 @@ import { MaterialModule } from 'src/app/main-modules/material.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { IconService } from 'src/app/services/icon.service';
 import { RouterService } from 'src/app/services/router.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SettingsComponent } from './settings/settings/settings.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        AboutComponent
+        AboutComponent,
+        PageNotFoundComponent,
+        SettingsComponent
     ],
     imports: [
         AngularModule,

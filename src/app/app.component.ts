@@ -25,11 +25,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (!this.authService.isLoggedin){
-            this.routerService.navigateToLogin();
-        } else {
-            this.routerService.navigateToHome();
-        }
+        // if (!this.authService.isLoggedin){
+        //     this.routerService.navigateToLogin();
+        // } else {
+        //     this.routerService.navigateToHome();
+        // }
     }
 
     public logout(): void {
