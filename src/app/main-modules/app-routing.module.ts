@@ -5,6 +5,10 @@ import { LoginComponent } from 'src/app/login/login.component';
 
 const routes: Routes = [
     {
+        path: "games",
+        loadChildren: () => import("../games/games.module").then(m => m.GamesModule)
+    },
+    {
         path: "login",
         component: LoginComponent,
     },
@@ -15,13 +19,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-  ],
-  exports: [
-    RouterModule,
-  ]
+    imports: [
+        RouterModule.forRoot(routes),
+    ],
+    exports: [
+        RouterModule,
+    ]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 }
