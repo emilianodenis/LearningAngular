@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 
-const iconBasePath: string =  "/assets/icons/";
-const iconBaseExtension: string =  ".svg";
+const iconBasePath: string = "/assets/icons/";
+const iconBaseExtension: string = ".svg";
 
 const icons: string[] = [
     "account_circle",
@@ -11,13 +11,14 @@ const icons: string[] = [
     "help"
 ];
 
+//This service is injected in the app.component to be instanciated
 @Injectable()
-export class IconService{
+export class IconService {
     constructor(
         private registry: MatIconRegistry,
         private sanitizer: DomSanitizer,
     ) {
-        
+        this.loadIcons();
     }
 
     public loadIcons(): void {

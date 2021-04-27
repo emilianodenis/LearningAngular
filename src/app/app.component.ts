@@ -12,10 +12,10 @@ export class AppComponent {
     public title: string = 'LearningAngular';
 
     constructor(
-        private iconService: IconService,
+        private iconService: IconService, //Must be injected to load svg icons
         private routerService: RouterService,
     ) {
-        this.iconService.loadIcons();
+
     }
 
     public logout(): void {
