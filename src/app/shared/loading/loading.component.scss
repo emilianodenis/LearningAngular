@@ -1,0 +1,25 @@
+.spinner-container {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 20000;
+    animation: from-to 2s;
+}
+
+@keyframes from-to {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

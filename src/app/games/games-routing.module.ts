@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from 'src/app/games/home/home.component';
 import { MinesweeperComponent } from 'src/app/games/minesweeper/minesweeper.component';
+import { ScoreBoardComponent } from 'src/app/games/score-board/score-board.component';
+import { GameResolver } from 'src/app/games/services/game.resolver';
 import { TaquinComponent } from 'src/app/games/taquin/taquin.component';
 
 const routes: Routes = [
@@ -17,6 +19,13 @@ const routes: Routes = [
                 path: "taquin",
                 component: TaquinComponent,
             },
+            {
+                path: "scoreboard",
+                component: ScoreBoardComponent,
+                resolve: {
+                    stats: GameResolver,
+                }
+            },
         ],
     },
 ];
@@ -28,6 +37,9 @@ const routes: Routes = [
     exports: [
         RouterModule,
     ],
+    providers: [
+        GameResolver,
+    ]
 })
 export class GamesRoutingModule {
 

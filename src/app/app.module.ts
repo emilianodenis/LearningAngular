@@ -9,8 +9,10 @@ import { MaterialModule } from 'src/app/main-modules/material.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { IconService } from 'src/app/services/icon.service';
 import { RouterService } from 'src/app/services/router.service';
+import { LoadingService } from 'src/app/shared/loading.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SettingsComponent } from './settings/settings/settings.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +20,8 @@ import { SettingsComponent } from './settings/settings/settings.component';
         LoginComponent,
         AboutComponent,
         PageNotFoundComponent,
-        SettingsComponent
+        SettingsComponent,
+        LoadingComponent
     ],
     imports: [
         AngularModule,
@@ -28,6 +31,7 @@ import { SettingsComponent } from './settings/settings/settings.component';
     providers: [
         AuthService,
         IconService,
+        LoadingService,
         RouterService,
     ],
     bootstrap: [
