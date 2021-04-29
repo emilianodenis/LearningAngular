@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { Observable } from "rxjs/internal/Observable";
 import { of } from "rxjs/internal/observable/of";
 import { throwError } from "rxjs/internal/observable/throwError";
@@ -7,12 +8,22 @@ import { User } from "src/app/model/user";
 @Injectable()
 export class AuthService {
 
-    public isLoggedin: boolean = false;
+
+    private isLoggedin = new BehaviorSubject<boolean>(false);
+
+    private _isLoggedin$: Observable<boolean> = this.isLoggedin.asObservable();
+    public get isLoggedin$(): Observable<boolean> {
+        return this._isLoggedin$;
+    }
+
+
+
+    //public isLoggedin: boolean = false;
 
     constructor(
 
     ) {
-        this.isLoggedin = this.checkExistingLogin();
+        this.isLoggedin.next(this.checkExistingLogin());
     }
 
     private checkExistingLogin(): boolean {
@@ -41,13 +52,13 @@ export class AuthService {
 
         localStorage.setItem("user", JSON.stringify(user));
 
-        this.isLoggedin = true;
+        this.isLoggedin.next(true);
 
         return of(true);
     }
 
     public logout(): void {
-        this.isLoggedin = false;
+        this.isLoggedin.next(false);
         localStorage.removeItem("user");
     }
 

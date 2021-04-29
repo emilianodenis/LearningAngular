@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GameStat } from 'src/app/model/game-stat';
 
 @Component({
-    selector: 'app-score-board',
+    selector: 'score-board',
     templateUrl: './score-board.component.html',
     styleUrls: ['./score-board.component.scss']
 })

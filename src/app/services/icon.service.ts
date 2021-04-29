@@ -7,8 +7,11 @@ const iconBaseExtension: string = ".svg";
 
 const icons: string[] = [
     "account_circle",
+    "chevron_right",
     "exit_to_app",
-    "help"
+    "games",
+    "help",
+    "settings",
 ];
 
 //This service is injected in the app.component to be instanciated

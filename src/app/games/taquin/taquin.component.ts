@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-taquin',
-  templateUrl: './taquin.component.html',
-  styleUrls: ['./taquin.component.scss']
+    selector: 'taquin',
+    templateUrl: './taquin.component.html',
+    styleUrls: ['./taquin.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaquinComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }

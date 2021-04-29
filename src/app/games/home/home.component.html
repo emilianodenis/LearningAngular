@@ -1,16 +1,28 @@
-<div class="game-menu">
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side">
+        <div class="game-menu">
 
-    <a class="menu-item" mat-button routerLink="./scoreboard" routerLinkActive="menu-item-active">
-        <span>Scoreboard</span>
-    </a>
+            <a class="menu-item" mat-button routerLink="./scoreboard" routerLinkActive="menu-item-active">
+                <span>Scoreboard</span>
+            </a>
 
-    <a class="menu-item" mat-button routerLink="./minesweeper" routerLinkActive="menu-item-active">
-        <span>Minesweeper</span>
-    </a>
+            <a class="menu-item" mat-button routerLink="./minesweeper" routerLinkActive="menu-item-active">
+                <span>Minesweeper</span>
+            </a>
 
-    <a class="menu-item" mat-button routerLink="./taquin" routerLinkActive="menu-item-active">
-        <span>Taquin</span>
-    </a>
+            <a class="menu-item" mat-button routerLink="./taquin" routerLinkActive="menu-item-active">
+                <span>Taquin</span>
+            </a>
 
-</div>
-<router-outlet></router-outlet>
+        </div>
+    </mat-drawer>
+
+    <div class="main-container">
+        <button mat-icon-button (click)="drawer.toggle()" class="drawer-button-trigger">
+            <mat-icon svgIcon="chevron_right" class="drawer-button-trigger-icon" [class.rotate]="drawer.opened">
+            </mat-icon>
+        </button>
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>

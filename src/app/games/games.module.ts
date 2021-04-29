@@ -5,6 +5,7 @@ import { MinesweeperComponent } from "src/app/games/minesweeper/minesweeper.comp
 import { ScoreBoardComponent } from "src/app/games/score-board/score-board.component";
 import { GameService } from "src/app/games/services/game.service";
 import { TaquinComponent } from "src/app/games/taquin/taquin.component";
+import { MaterialModule } from "src/app/main-modules/material.module";
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { TaquinComponent } from "src/app/games/taquin/taquin.component";
     ],
     imports: [
         GamesRoutingModule,
+        MaterialModule,
     ],
     providers: [
         GameService,
