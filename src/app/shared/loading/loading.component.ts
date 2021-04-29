@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
-import { filter } from 'rxjs/operators';
 import { DisposableSubscriptions } from 'src/app/model/disposable-subscriptions';
 import { LoadingService } from 'src/app/shared/loading.service';
 
@@ -10,7 +9,7 @@ import { LoadingService } from 'src/app/shared/loading.service';
     templateUrl: './loading.component.html',
     styleUrls: ['./loading.component.scss']
 })
-export class LoadingComponent extends DisposableSubscriptions implements OnInit {
+export class LoadingComponent extends DisposableSubscriptions implements OnInit, OnDestroy {
 
     @Input()
     routing: boolean = false;
@@ -31,25 +30,20 @@ export class LoadingComponent extends DisposableSubscriptions implements OnInit 
 
     ngOnInit(): void {
         if (this.detectRoutingOngoing) {
-            this.addSingleLivingSubscription("nav start",
+            this.addSubscriptions(
                 this.router
                     .events
-                    .pipe(
-                        filter(evt => evt instanceof NavigationStart || evt instanceof RouteConfigLoadStart),
-                    )
-                    .subscribe(() => this.loadingService.loadingOn())
-            );
-            this.addSingleLivingSubscription("nav end",
-                this.router
-                    .events
-                    .pipe(
-                        filter(evt => evt instanceof NavigationEnd ||
+                    .subscribe(evt => {
+                        if (evt instanceof NavigationStart || evt instanceof RouteConfigLoadStart) {
+                            this.loadingService.loadingOn();
+                        } else if (evt instanceof NavigationEnd ||
                             evt instanceof NavigationError ||
                             evt instanceof NavigationCancel ||
-                            evt instanceof RouteConfigLoadEnd)
-                    )
-                    .subscribe(() => this.loadingService.loadingOff())
-            );
+                            evt instanceof RouteConfigLoadEnd) {
+                            this.loadingService.loadingOff();
+                        }
+                    }),
+            )
         }
     }
 
