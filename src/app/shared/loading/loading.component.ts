@@ -30,16 +30,16 @@ export class LoadingComponent extends DisposableSubscriptions implements OnInit 
     }
 
     ngOnInit(): void {
-
         if (this.detectRoutingOngoing) {
-
-            this.addSubscriptions(
+            this.addSingleLivingSubscription("nav start",
                 this.router
                     .events
                     .pipe(
                         filter(evt => evt instanceof NavigationStart || evt instanceof RouteConfigLoadStart),
                     )
-                    .subscribe(() => this.loadingService.loadingOn()),
+                    .subscribe(() => this.loadingService.loadingOn())
+            );
+            this.addSingleLivingSubscription("nav end",
                 this.router
                     .events
                     .pipe(
@@ -48,29 +48,8 @@ export class LoadingComponent extends DisposableSubscriptions implements OnInit 
                             evt instanceof NavigationCancel ||
                             evt instanceof RouteConfigLoadEnd)
                     )
-                    .subscribe(() => this.loadingService.loadingOff()),
+                    .subscribe(() => this.loadingService.loadingOff())
             );
-
-
-
-            // this.router.events
-            //     .subscribe(
-            //         event => {
-            //             if (event instanceof NavigationStart
-            //                 || event instanceof RouteConfigLoadStart) {
-            //                 this.loadingService.loadingOn();
-            //             }
-            //             else if (
-            //                 event instanceof NavigationEnd ||
-            //                 event instanceof NavigationError ||
-            //                 event instanceof NavigationCancel ||
-            //                 event instanceof RouteConfigLoadEnd) {
-            //                 this.loadingService.loadingOff();
-
-            //             }
-
-            //         }
-            //     );
         }
     }
 
