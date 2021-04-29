@@ -5,9 +5,9 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    /*"strict": true,
     "noImplicitAny": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": true,*/
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
@@ -24,9 +24,9 @@
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
+    /*"strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "fullTemplateTypeCheck": true,
+    "fullTemplateTypeCheck": true,*/
   }
 }

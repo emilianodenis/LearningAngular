@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { DisposableSubscriptions } from 'src/app/model/disposable-subscriptions';
@@ -7,7 +7,8 @@ import { LoadingService } from 'src/app/shared/loading.service';
 @Component({
     selector: 'loading',
     templateUrl: './loading.component.html',
-    styleUrls: ['./loading.component.scss']
+    styleUrls: ['./loading.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush, 
 })
 export class LoadingComponent extends DisposableSubscriptions implements OnInit, OnDestroy {
 
