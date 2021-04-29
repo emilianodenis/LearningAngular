@@ -32,7 +32,11 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/styles/animations.scss",
+              "src/assets/styles/global.scss",
+              "src/assets/styles/mat-override.scss",
+              "src/assets/styles/utility.scss"
             ],
             "scripts": []
           },
@@ -96,7 +100,11 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/styles/animations.scss",
+              "src/assets/styles/global.scss",
+              "src/assets/styles/mat-override.scss",
+              "src/assets/styles/utility.scss"
             ],
             "scripts": []
           }

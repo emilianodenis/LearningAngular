@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/internal/Observable";
 import { shareReplay } from "rxjs/internal/operators/shareReplay";
+import { map } from "rxjs/operators";
 import { GameStat } from "src/app/model/game-stat";
 
 @Injectable()
@@ -16,6 +17,7 @@ export class GameService {
     public getGameStats(): Observable<GameStat[]> {
         return this.http.get<GameStat[]>("/api/gamestats/")
             .pipe(
+                map(res => res["payload"]),
                 shareReplay()
             );
     }

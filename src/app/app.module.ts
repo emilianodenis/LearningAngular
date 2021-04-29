@@ -28,6 +28,8 @@ import { LoadingComponent } from 'src/app/shared/loading/loading.component';
         MaterialModule,
         AppRoutingModule,
     ],
+    exports: [
+    ],
     providers: [
         AuthService,
         IconService,

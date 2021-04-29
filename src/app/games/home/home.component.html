@@ -1,6 +1,7 @@
 <mat-drawer-container autosize>
-    <mat-drawer #drawer mode="side">
-        <div class="game-menu">
+
+    <mat-drawer #drawer mode="side" opened>
+        <div *ngIf="drawer.opened" class="game-menu fade-in-slow">
 
             <a class="menu-item" mat-button routerLink="./scoreboard" routerLinkActive="menu-item-active">
                 <span>Scoreboard</span>
@@ -17,12 +18,11 @@
         </div>
     </mat-drawer>
 
-    <div class="main-container">
-        <button mat-icon-button (click)="drawer.toggle()" class="drawer-button-trigger">
-            <mat-icon svgIcon="chevron_right" class="drawer-button-trigger-icon" [class.rotate]="drawer.opened">
-            </mat-icon>
-        </button>
+    <div class="main-container" [class.container-margin]="!drawer.opened">
         <router-outlet></router-outlet>
     </div>
-
 </mat-drawer-container>
+<button mat-icon-button (click)="drawer.toggle()" class="drawer-button-trigger">
+    <mat-icon svgIcon="chevron_left" class="drawer-button-trigger-icon" [class.rotate]="!drawer.opened">
+    </mat-icon>
+</button>

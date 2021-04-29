@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
 import { GamesRoutingModule } from "src/app/games/games-routing.module";
 import { HomeComponent } from "src/app/games/home/home.component";
 import { MinesweeperComponent } from "src/app/games/minesweeper/minesweeper.component";
@@ -15,6 +16,7 @@ import { MaterialModule } from "src/app/main-modules/material.module";
         ScoreBoardComponent,
     ],
     imports: [
+        CommonModule,
         GamesRoutingModule,
         MaterialModule,
     ],

@@ -8,6 +8,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+    public isDrawerOpened: boolean = false;
+
     constructor() { }
 
     ngOnInit(): void {

@@ -7,6 +7,7 @@ const iconBaseExtension: string = ".svg";
 
 const icons: string[] = [
     "account_circle",
+    "chevron_left",
     "chevron_right",
     "exit_to_app",
     "games",

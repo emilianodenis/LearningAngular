@@ -1,0 +1,13 @@
+:host{
+    display: flex;
+    flex: 1 1 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stat-container {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
