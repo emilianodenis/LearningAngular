@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthStore } from 'src/app/services/auth.store';
 import { IconService } from 'src/app/services/icon.service';
 import { RouterService } from 'src/app/services/router.service';
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     constructor(
         private iconService: IconService, //Must be injected to load svg icons
         private routerService: RouterService,
-        private authService: AuthService,
+        private authService: AuthStore,
     ) {
 
     }

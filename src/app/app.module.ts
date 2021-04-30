@@ -7,7 +7,7 @@ import { AngularModule } from 'src/app/main-modules/angular.module';
 import { AppRoutingModule } from 'src/app/main-modules/app-routing.module';
 import { MaterialModule } from 'src/app/main-modules/material.module';
 import { PageNotFoundComponent } from 'src/app/main/page-not-found/page-not-found.component';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthStore } from 'src/app/services/auth.store';
 import { IconService } from 'src/app/services/icon.service';
 import { RouterService } from 'src/app/services/router.service';
 import { SettingsComponent } from 'src/app/settings/settings.component';
@@ -31,7 +31,7 @@ import { LoadingComponent } from 'src/app/shared/loading/loading.component';
     exports: [
     ],
     providers: [
-        AuthService,
+        AuthStore,
         IconService,
         LoadingService,
         RouterService,

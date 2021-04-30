@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { Observable } from "rxjs/internal/Observable";
-import { of } from "rxjs/internal/observable/of";
 import { throwError } from "rxjs/internal/observable/throwError";
 import { map, shareReplay, tap } from "rxjs/operators";
 import { User } from "src/app/model/user";
@@ -11,7 +10,7 @@ import { User } from "src/app/model/user";
 const AUTH_DATA = "auth_data";
 
 @Injectable()
-export class AuthService {
+export class AuthStore {
 
     private _isLoggedin$: Observable<boolean>;
     public get isLoggedin$(): Observable<boolean> {

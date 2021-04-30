@@ -6,27 +6,30 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
     imports: [
         MatButtonModule,
         MatCardModule,
-        MatIconModule,
         MatFormFieldModule,
+        MatIconModule,
         MatInputModule,
-        MatSidenavModule,
         MatProgressSpinnerModule,
+        MatSidenavModule,
+        MatSnackBarModule,
         MatToolbarModule,
     ],
     exports: [
         MatButtonModule,
         MatCardModule,
-        MatIconModule,
         MatFormFieldModule,
+        MatIconModule,
         MatInputModule,
-        MatSidenavModule,
         MatProgressSpinnerModule,
+        MatSidenavModule,
+        MatSnackBarModule,
         MatToolbarModule,
     ]
 })

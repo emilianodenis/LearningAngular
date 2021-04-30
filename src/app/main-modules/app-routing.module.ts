@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from 'src/app/main/about/about.component';
 import { LoginComponent } from 'src/app/main/login/login.component';
 import { PageNotFoundComponent } from 'src/app/main/page-not-found/page-not-found.component';
+import { AuthGuard } from 'src/app/services/auth.guard';
 import { SettingsComponent } from 'src/app/settings/settings.component';
 
 const routes: Routes = [
@@ -26,6 +27,9 @@ const routes: Routes = [
     {
         path: "settings",
         component: SettingsComponent,
+        canActivate: [
+            AuthGuard,
+        ]
     },
     {
         //PageNotFound must be the last route!!!
@@ -40,6 +44,9 @@ const routes: Routes = [
     ],
     exports: [
         RouterModule,
+    ],
+    providers: [
+        AuthGuard,
     ]
 })
 export class AppRoutingModule {

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthStore } from 'src/app/services/auth.store';
 import { RouterService } from 'src/app/services/router.service';
 import { LoadingService } from 'src/app/shared/loading.service';
 
@@ -23,9 +24,10 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private auth: AuthService,
+        private auth: AuthStore,
         private routerService: RouterService,
         private loading: LoadingService,
+        private snack: MatSnackBar,
     ) {
 
         this.form = this.fb.group({
@@ -66,7 +68,15 @@ export class LoginComponent implements OnInit {
                 },
                 err => {
                     this.loading.loadingOff();
-                    alert("Login failed!");
+                    this.snack.open(
+                        "login failed",
+                        "try again!",
+                        <MatSnackBarConfig>{
+                            horizontalPosition: 'center',
+                            verticalPosition: 'top',
+                            duration: 3000,
+                        }
+                    )
                 }
             );
     }
