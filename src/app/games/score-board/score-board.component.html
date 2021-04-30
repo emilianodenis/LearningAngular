@@ -1,4 +1,4 @@
-<div *ngIf="(stats$ | async) as stats">
+<ng-container *ngIf="(stats$ | async) as stats">
     <mat-card *ngFor="let stat of stats" class="stat-container mat-elevation-z8">
         <mat-card-header>
             <mat-card-title>{{stat.game}}</mat-card-title>
@@ -8,4 +8,4 @@
             <div>Score: {{stat.bestScore}}</div>
         </mat-card-content>
     </mat-card>
-</div>
+</ng-container>
