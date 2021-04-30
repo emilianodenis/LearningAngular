@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NoPreloading, RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from 'src/app/main/about/about.component';
 import { LoginComponent } from 'src/app/main/login/login.component';
 import { PageNotFoundComponent } from 'src/app/main/page-not-found/page-not-found.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
+import { CanLoadAuthGuard } from 'src/app/services/can-load-auth.guard';
+import { ConfirmExitGuard } from 'src/app/services/confirm-exit.guard';
+import { CustomPreloadingStragegy } from 'src/app/services/custom-preloading.strategy';
 import { SettingsComponent } from 'src/app/settings/settings.component';
 
 const routes: Routes = [
@@ -15,6 +18,12 @@ const routes: Routes = [
     {
         path: "games",
         loadChildren: () => import("../games/games.module").then(m => m.GamesModule),
+        canLoad: [
+            CanLoadAuthGuard,
+        ],
+        data: {
+            preload: false,
+        },
     },
     {
         path: "about",
@@ -29,7 +38,13 @@ const routes: Routes = [
         component: SettingsComponent,
         canActivate: [
             AuthGuard,
-        ]
+        ],
+        canActivateChild: [
+            AuthGuard,
+        ],
+        canDeactivate: [
+            ConfirmExitGuard,
+        ],
     },
     {
         //PageNotFound must be the last route!!!
@@ -40,13 +55,21 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes),
+        RouterModule.forRoot(
+            routes,
+            {
+                preloadingStrategy: CustomPreloadingStragegy,//NoPreloading,
+            }
+            ),
     ],
     exports: [
         RouterModule,
     ],
     providers: [
         AuthGuard,
+        CanLoadAuthGuard,
+        ConfirmExitGuard,
+        CustomPreloadingStragegy,
     ]
 })
 export class AppRoutingModule {

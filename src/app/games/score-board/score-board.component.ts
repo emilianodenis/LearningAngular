@@ -27,5 +27,14 @@ export class ScoreBoardComponent implements OnInit {
                 .pipe(
                     map(data => data["stats"]),
                 );
+
+        // this.route
+        //     .queryParamMap
+        //     .pipe(
+        //         map(p => p["params"]),
+        //     )
+        //     .subscribe(
+        //         p => console.log(p),
+        //     );
     }
 }

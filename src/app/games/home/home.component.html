@@ -3,15 +3,15 @@
     <mat-drawer #drawer mode="side" opened>
         <div class="game-menu fade-in">
 
-            <a class="menu-item" mat-button routerLink="./scoreboard" routerLinkActive="menu-item-active">
+            <a class="menu-item" mat-button routerLink="./scoreboard" routerLinkActive="menu-item-active" [queryParams]="timeParam">
                 <span>Scoreboard</span>
             </a>
 
-            <a class="menu-item" mat-button routerLink="./minesweeper" routerLinkActive="menu-item-active">
+            <a class="menu-item" mat-button routerLink="./minesweeper" routerLinkActive="menu-item-active" [queryParams]="timeParam">
                 <span>Minesweeper</span>
             </a>
 
-            <a class="menu-item" mat-button routerLink="./taquin" routerLinkActive="menu-item-active">
+            <a class="menu-item" mat-button routerLink="./taquin" routerLinkActive="menu-item-active" [queryParams]="timeParam">
                 <span>Taquin</span>
             </a>
 
