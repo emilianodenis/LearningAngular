@@ -1,4 +1,4 @@
-:host{
+.stat-container {
     display: flex;
     flex: 1 1 100%;
     align-items: center;
@@ -6,8 +6,6 @@
     flex-wrap: wrap;
 }
 
-.stat-container {
-    display: flex;
-    flex-direction: column;
+mat-card {
     margin: 15px;
 }
