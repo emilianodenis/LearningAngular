@@ -50,9 +50,9 @@
 <!-- <messages></messages> -->
 <div class="main-screen">
 
-    <loading [detectRoutingOngoing]="true"></loading>
-
     <router-outlet></router-outlet>
+
+    <loading [detectRoutingOngoing]="true" style="z-index: 50000;"></loading>
 
 </div>
 

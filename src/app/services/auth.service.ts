@@ -1,65 +1,66 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { Observable } from "rxjs/internal/Observable";
 import { of } from "rxjs/internal/observable/of";
 import { throwError } from "rxjs/internal/observable/throwError";
+import { map, shareReplay, tap } from "rxjs/operators";
 import { User } from "src/app/model/user";
+
+
+const AUTH_DATA = "auth_data";
 
 @Injectable()
 export class AuthService {
 
-
-    private isLoggedin = new BehaviorSubject<boolean>(false);
-
-    private _isLoggedin$: Observable<boolean> = this.isLoggedin.asObservable();
+    private _isLoggedin$: Observable<boolean>;
     public get isLoggedin$(): Observable<boolean> {
         return this._isLoggedin$;
     }
 
+    private user = new BehaviorSubject<User>(undefined);
 
-
-    //public isLoggedin: boolean = false;
-
-    constructor(
-
-    ) {
-        this.isLoggedin.next(this.checkExistingLogin());
+    private _user$: Observable<User> = this.user.asObservable();
+    public get user$(): Observable<User> {
+        return this._user$;
     }
 
-    private checkExistingLogin(): boolean {
+    constructor(
+        private http: HttpClient,
+    ) {
+        this._isLoggedin$ = this.user$.pipe(map(user => !!user));
+        this.checkExistingLogin()
+    }
 
-        const loadedUser = localStorage.getItem("user");
+    private checkExistingLogin(): void {
+
+        const loadedUser = localStorage.getItem(AUTH_DATA);
 
         if (loadedUser == undefined)
-            return false;
+            return;
 
         const user = <User>JSON.parse(loadedUser);
 
-        return !!user.username && !!user.password;
+        this.user.next(user);
     }
 
-    public login(username: string, password: string): Observable<boolean> {
-        if (!username || !password)
+    public login(email: string, password: string): Observable<User> {
+        if (!email || !password)
             return throwError("Invalid credentials");
 
-        if (username == "123" && password == "123")
-            return throwError("Invalid credentials");
-
-        let user = <User>{
-            username,
-            password,
-        }
-
-        localStorage.setItem("user", JSON.stringify(user));
-
-        this.isLoggedin.next(true);
-
-        return of(true);
+        return this.http.post<User>("/api/login", { email, password })
+            .pipe(
+                tap(user => {
+                    this.user.next(user);
+                    localStorage.setItem(AUTH_DATA, JSON.stringify(user));
+                }),
+                shareReplay()
+            );
     }
 
     public logout(): void {
-        this.isLoggedin.next(false);
-        localStorage.removeItem("user");
+        this.user.next(undefined);
+        localStorage.removeItem(AUTH_DATA);
     }
 
 }

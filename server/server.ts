@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { Application } from "express";
+import { valiateUser } from './auth.route';
 import { getAllStats } from './get-stats.routes';
 
 const bodyParser = require('body-parser');
@@ -7,6 +8,8 @@ const bodyParser = require('body-parser');
 const app: Application = express();
 
 app.use(bodyParser.json());
+
+app.route("/api/login").post(valiateUser)
 
 app.route("/api/gamestats").get(getAllStats);
 
