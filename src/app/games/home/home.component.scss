@@ -44,19 +44,3 @@ mat-drawer-container {
         transform: rotate(180deg);
     }
 }
-
-.rotate {
-    transform: rotate(180deg);
-    animation: rotateKey 500ms;
-    animation-iteration-count: 1;
-}
-
-@keyframes rotateKey {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(-180deg);
-    }
-}
