@@ -13,20 +13,22 @@ import { RouterService } from 'src/app/services/router.service';
 import { SettingsComponent } from 'src/app/settings/settings.component';
 import { LoadingService } from 'src/app/shared/loading.service';
 import { LoadingComponent } from 'src/app/shared/loading/loading.component';
+import { ChatComponent } from 'src/app/main/chat/chat.component';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        LoginComponent,
         AboutComponent,
+        AppComponent,
+        ChatComponent,
+        LoadingComponent,
+        LoginComponent,
         PageNotFoundComponent,
         SettingsComponent,
-        LoadingComponent
     ],
     imports: [
         AngularModule,
-        MaterialModule,
         AppRoutingModule,
+        MaterialModule,
     ],
     exports: [
     ],

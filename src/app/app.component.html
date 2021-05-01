@@ -1,8 +1,6 @@
 <mat-toolbar color="primary">
 
-
     <div class="standard-links">
-        <!--  [routerLinkActiveOptions]="{exact:true}" -->
         <a class="menu-item" mat-button routerLink="/games" routerLinkActive="menu-item-active"
             [routerLinkActiveOptions]="{exact: true}">
             <span>Games</span>
@@ -11,8 +9,7 @@
         <a class="menu-item" mat-button routerLink="/about" routerLinkActive="menu-item-active">
             <span>About</span>
         </a>
-        <!--  *ngIf="auth.isLoggedIn$ | async" [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]" -->
-        <a mat-button class="menu-item">
+        <a *ngIf="isLoggedin$ | async" mat-button class="menu-item" [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]">
             <mat-icon svgIcon="help"></mat-icon>
         </a>
     </div>
@@ -58,4 +55,4 @@
 
 </div>
 
-<!-- <router-outlet name="chat"></router-outlet> -->
+<router-outlet name="chat"></router-outlet>
