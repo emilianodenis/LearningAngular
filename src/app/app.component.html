@@ -9,7 +9,8 @@
         <a class="menu-item" mat-button routerLink="/about" routerLinkActive="menu-item-active">
             <span>About</span>
         </a>
-        <a *ngIf="isLoggedin$ | async" mat-button class="menu-item" [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]">
+        <!-- [routerLink]="[{outlets: {chat: ['helpdesk-chat']}}]" -->
+        <a *ngIf="isLoggedin$ | async" mat-button class="menu-item">
             <mat-icon svgIcon="help"></mat-icon>
         </a>
     </div>

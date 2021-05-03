@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSerializer } from '@angular/router';
 import { AboutComponent } from 'src/app/main/about/about.component';
 import { ChatComponent } from 'src/app/main/chat/chat.component';
 import { LoginComponent } from 'src/app/main/login/login.component';
@@ -65,8 +65,21 @@ const routes: Routes = [
             routes,
             {
                 preloadingStrategy: CustomPreloadingStragegy,//NoPreloading,
+                enableTracing: false,
+                useHash: false,
+                scrollPositionRestoration: 'enabled',
+
+                //Allows to access parent route parameter directly through
+                //route.paramMap.get instead of route.parent.paramMap
+                paramsInheritanceStrategy: 'always',
+
+                relativeLinkResolution: 'corrected',
+
+                malformedUriErrorHandler:
+                    (error: URIError, urlSerializer: UrlSerializer, url: string) =>
+                        urlSerializer.parse('/page-not-found')
             }
-            ),
+        ),
     ],
     exports: [
         RouterModule,
